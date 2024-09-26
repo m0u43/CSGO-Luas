@@ -32,6 +32,10 @@ reference.dormant_aimbot = ui.get('Rage', 'General', 'Main', 'Default', 'Dormant
 reference.dormant_aimbot_key = ui.get('Rage', 'General', 'Main', 'Default', 'Dormant Aimbot Key')
 reference.body_aim = ui.get('Rage', 'General', 'Main', 'Default', 'Force Body Aim')
 reference.body_aim_key = ui.get('Rage', 'General', 'Main', 'Default', 'Force Body Key')
+reference.override_damage = ui.get('Rage', 'General', 'Main', 'Default', 'Override Damage Key')
+reference.fake_latency = ui.get('Misc', 'Other', 'Other', 'Fake Latency')
+reference.ping_spike_key = ui.get('Misc', 'Other', 'Other', 'Ping Spike Key')
+reference.ping_spike_amount = ui.get('Misc', 'Other', 'Other', 'Ping Spike Amount')
 -- @lordmouse: i dont care about filters (if you are then make it by yourself for each state)
 reference.fake_flick = ui.get('Rage', 'Anti-Aim', 'General', 'Stand', 'Fake Flick')
 reference.fake_flick_key = ui.get('Rage', 'Anti-Aim', 'General', 'Stand', 'Fake Flick Key')
@@ -151,10 +155,12 @@ local assembly = {} do
     process_indicator('DEATOMIZER', reference.fake_flick:get() and reference.fake_flick_key:get(), 'Unleashing the power of deatomizer!', 199, 202, 249)
     process_indicator('FREESTANDING', reference.freestanding:get() and reference.freestanding_key:get() and not reference.manual_left:get() and not reference.manual_right:get() and not reference.manual_backwards:get() and not reference.manual_forwards:get(), 'Your anti-aim is currently freestanding', 255, 255, 255)
     process_indicator('BODY', reference.body_aim:get() and reference.body_aim_key:get(), 'Enemies cannot remain unkilled under this force', 255, 255, 255)
+    process_indicator('PING', reference.fake_latency:get() and reference.ping_spike_key:get(), 'Your ping is spiking to ' .. reference.ping_spike_amount:get() .. 'ms', 160, 220, 154)
     process_indicator('LEFT', reference.manual_left:get(), 'Your anti-aim is currently facing left', 255, 255, 255)
     process_indicator('RIGHT', reference.manual_right:get(), 'Your anti-aim is currently facing right', 255, 255, 255)
-    process_indicator('BACKWARDS', reference.manual_backwards:get(), 'Your anti-aim is currently facing backwards', 255, 255, 255)
+    process_indicator('BACK', reference.manual_backwards:get(), 'Your anti-aim is currently facing back', 255, 255, 255)
     process_indicator('FORWARDS', reference.manual_forwards:get(), 'Your anti-aim is currently facing forwards', 255, 255, 255)
+    process_indicator('DAMAGE', reference.override_damage:get(), 'You are currently overriding minimum damage', 255, 255, 255)
   end
 end
 
