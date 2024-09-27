@@ -114,7 +114,7 @@ local assembly = {} do
     end
 
     local me = entity_list.get_local_player()
-    if not me and not client.is_alive() then
+    if not me or not client.is_alive() then
       return
     end
 
